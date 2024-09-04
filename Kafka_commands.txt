@@ -1,0 +1,44 @@
+
+
+
+
+Start Zoo-keeper:
+-------------------------------
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Start Kafka-server:
+----------------------------------------
+Duplicate the session & enter in a new console --
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"
+cd kafka_2.13-3.8.0
+bin/kafka-server-start.sh config/server.properties
+
+
+
+
+cd "C:\Users\jayan\Downloads\Kafka project"
+ssh -i "kafka-stock-market-project.pem" ec2-user@ec2-3-82-222-172.compute-1.amazonaws.com
+
+cd kafka_2.13-3.8.0
+
+my server details from ec2 machine:3.82.222.172
+
+Create the topic:
+-----------------------------
+Duplicate the session & enter in a new console --
+
+--create kafka topic
+
+bin/kafka-topics.sh --create --topic jayanth1 --bootstrap-server 3.82.222.172:9092 --replication-factor 1 --partitions 1
+
+Start Producer:
+--------------------------
+
+bin/kafka-console-producer.sh --topic jayanth1 --bootstrap-server 3.82.222.172:9092
+
+Start Consumer:
+-------------------------
+Duplicate the session & enter in a new console --
+
+bin/kafka-console-consumer.sh --topic jayanth1 --bootstrap-server 3.82.222.172:9092
+
